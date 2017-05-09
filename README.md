@@ -1,24 +1,29 @@
-# README
+Carwash
+====
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+You are running a car wash. Here are the rules:
 
-Things you may want to cover:
+- [x] You must use Ruby on Rails
+- [x] Your car wash accepts cars and trucks.
+- [x] You charge $5 for cars.
+- [x] You charge $10 for trucks.
+- [x] Your car wash charges $2 extra if the truck has mud in the bed.
+- [x] Your car wash does not accept trucks with the bed let down.
+- [x] If the vehicle comes in a second time, they get 50% off.
+- [x] If the license plate equals 1111111, the vehicle is stolen and does not get a car wash.
 
-* Ruby version
+----------
 
-* System dependencies
+Info
+---------
+* Created with `rails 5.1`
 
-* Configuration
+Setup
+---------
+1. Install gems: `bundle install`
+2. Initialize database `rake db:setup`
+3. Run server `rails s`
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Blacklist
+---------
+Visit `/blacklists` to modify the blacklist

@@ -9,9 +9,16 @@
 </p>
 
 <p>
-  <strong>Wash:</strong>
-  <%= link_to @charge.wash %>
+  <strong>Is Credit:</strong>
+  <%= @charge.is_credit %>
 </p>
 
-<%= link_to 'Edit', edit_charge_path(@charge) %> |
-<%= link_to 'Back', charges_path %>
+<p>
+  <strong>Wash:</strong>
+  <%= link_to "Wash ID: #{@charge.wash_id}", @charge.wash %>
+</p>
+
+<nav class="nav-actions">
+  <%= link_to 'Edit', edit_charge_path(@charge) %>
+  <%= link_to 'Back', charges_path %>
+</nav>

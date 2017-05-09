@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+%w[
+  1111111
+].each do |banned|
+  puts "Adding blacklist: #{banned}"
+  Blacklist.find_or_create_by(license: banned)
+end

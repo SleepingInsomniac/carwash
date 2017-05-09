@@ -3,6 +3,7 @@ class Wash < ApplicationRecord
   has_many :charges
   belongs_to :user
   before_save :calculate_total
+  before_save :copy_vehicle_attributes
   before_validation :check_blacklist
   before_validation :check_truck_bed
 
@@ -40,7 +41,14 @@ class Wash < ApplicationRecord
 
   def check_truck_bed
     if vehicle && vehicle.truck? && !bed_is_up?
-      errors.add :bed_is_up, "Truck bed must be up"
+      errors.add :vehicle, "Truck bed must be up"
+    end
+  end
+
+  def copy_vehicle_attributes
+    if vehicle
+      self.license = vehicle.license
+      self.vehicle_type = vehicle.vehicle_type
     end
   end
 

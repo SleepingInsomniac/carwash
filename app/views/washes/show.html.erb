@@ -13,19 +13,16 @@
     </h3>
 
     <div class="license">
-      License: <%= @wash.vehicle.license %> (<%= @wash.vehicle.vehicle_type %>)
+      License: <%= @wash.license %> (<%= @wash.vehicle_type %>)
     </div>
     
     <ul>
       <% @wash.charges.each do |charge| %>
         <li>
           <span class="reciept-item"><%= charge.description %></span>
-          <span class="reciept-value <%= charge.is_credit? ? 'credit':'' %>">
-            <% if charge.is_credit? %>
-              <%= number_to_currency charge.amount %>
-            <% else %>
-              (<%= number_to_currency charge.amount %>)
-            <% end %>
+          <span class="reciept-value <%= charge.is_credit? ? 'credit' : 'debit' %>">
+            <%= charge.is_credit ? '-' : '' %>
+            <%= number_to_currency charge.amount %>
           </span>
         </li>
       <% end %>
@@ -38,6 +35,9 @@
   </div>
 </label>
 
-<%= link_to 'Edit', edit_wash_path(@wash) %> |
-<%= link_to 'Print', 'javascript:window.print()' %> |
-<%= link_to 'Wash another car', new_wash_path %>
+<nav class="nav-actions">
+  <%= link_to 'Edit', edit_wash_path(@wash) %>
+  <%= link_to 'Print', 'javascript:window.print()' %>
+  <%= link_to 'Wash again!', new_wash_path(vehicle: @wash.license) %>
+  <%= link_to 'Wash another vehicle', new_wash_path %>
+</nav>

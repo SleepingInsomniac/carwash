@@ -14,7 +14,7 @@
   <tbody>
     <% @washes.each do |wash| %>
       <tr>
-        <td><%= wash.vehicle.license %></td>
+        <td><%= wash.license %> (<%= wash.vehicle_type %>)</td>
         <td class="money"><%= number_to_currency wash.total %></td>
         <!-- <td><%= wash.description %></td> -->
         <td><%= wash.created_at.strftime("%B %m, %Y at %r (%Z)") %></td>

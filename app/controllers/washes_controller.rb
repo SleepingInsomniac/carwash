@@ -10,6 +10,10 @@ class WashesController < ApplicationController
   # GET /washes/1
   # GET /washes/1.json
   def show
+    case Wash.where(vehicle_id: @wash.vehicle_id).count
+    when 1
+      @show_discount = true
+    end
   end
 
   # GET /washes/new
@@ -43,8 +47,6 @@ class WashesController < ApplicationController
       case Wash.where(vehicle_id: @wash.vehicle_id).count
       when 1
         @wash.charges << Charge.new(amount: (@wash.calculated_total / 2), description: 'Return customer (50% off)', is_credit: true)
-      when 0
-        @show_discount = true
       end
     end
 

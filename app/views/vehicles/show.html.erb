@@ -10,6 +10,8 @@
   <%= @vehicle.license %>
 </p>
 
-<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
-<%= link_to 'My Vehicles', vehicles_path %> |
-<%= link_to 'Wash this vehicle', new_wash_path(vehicle: @vehicle.license) %>
+<nav class="nav-actions">
+  <%= link_to 'Edit', edit_vehicle_path(@vehicle) %>
+  <%= link_to 'My Vehicles', vehicles_path %>
+  <%= link_to 'Wash this vehicle', new_wash_path(vehicle: @vehicle.license) %>
+</nav>

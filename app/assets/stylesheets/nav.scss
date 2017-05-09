@@ -24,3 +24,16 @@ body > nav {
     }
   }
 }
+
+.nav-actions {
+  border: 1px solid rgba(#000,0.3);
+
+  a {
+    padding: 0.3em 0.5em;
+    display: inline-block;
+  }
+
+  a + a {
+    border-left: 1px solid rgba(#000,0.3);
+  }
+}
