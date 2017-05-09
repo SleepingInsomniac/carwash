@@ -1,0 +1,17 @@
+<p>
+  <strong>Description:</strong>
+  <%= @charge.description %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @charge.amount %>
+</p>
+
+<p>
+  <strong>Wash:</strong>
+  <%= link_to @charge.wash %>
+</p>
+
+<%= link_to 'Edit', edit_charge_path(@charge) %> |
+<%= link_to 'Back', charges_path %>

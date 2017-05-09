@@ -1,0 +1,15 @@
+
+
+<p>
+  <strong>Vehicle type:</strong>
+  <%= @vehicle.vehicle_type %>
+</p>
+
+<p>
+  <strong>License:</strong>
+  <%= @vehicle.license %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'My Vehicles', vehicles_path %> |
+<%= link_to 'Wash this vehicle', new_wash_path(vehicle: @vehicle.license) %>

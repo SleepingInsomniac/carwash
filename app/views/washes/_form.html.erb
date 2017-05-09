@@ -1,0 +1,51 @@
+<%= form_with(model: wash, local: true, id: 'new-wash-form') do |form| %>
+  <% if wash.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(wash.errors.count, "error") %> prohibited this wash from being saved:</h2>
+
+      <ul>
+      <% wash.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :vehicle_id %>
+    <%= form.select :vehicle_id do %>
+      <option>Please select a vehicle</option>
+      <%= @current_user.vehicles.each do |vehicle| -%>
+        <option
+          value="<%= vehicle.id %>"
+          data-vehicle-type="<%= vehicle.vehicle_type %>"
+          <%= "selected" if vehicle == wash.vehicle %>>
+          <%= vehicle.license %> (<%= vehicle.vehicle_type %>)
+        </option>
+      <%- end -%>
+    <%- end -%>
+
+    <%= link_to 'Add new vehicle', new_vehicle_path %>
+  </div>
+
+  <fieldset
+    class="section-vehicle-type show-truck"
+    data-show="<%= wash.vehicle && wash.vehicle.truck? ? 'true' : 'false' %>">
+
+    <div class="field">
+      <%= form.label :mud_in_bed do %>
+        <%= form.check_box :mud_in_bed, id: :wash_mud_in_bed %> Truck bed has mud
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= form.label :bed_is_up do %>
+        <%= form.check_box :bed_is_up, id: :wash_bed_is_up %> Truck bed is up
+      <% end %>
+    </div>
+  </fieldset>
+
+  <div class="actions">
+    <%= form.submit "Wash my vehicle" %>
+  </div>
+<% end %>

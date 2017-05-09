@@ -1,0 +1,22 @@
+<%= form_with(model: blacklist, local: true) do |form| %>
+  <% if blacklist.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(blacklist.errors.count, "error") %> prohibited this blacklist from being saved:</h2>
+
+      <ul>
+      <% blacklist.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :license %>
+    <%= form.text_field :license, id: :blacklist_license %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Carwash</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="controller-<%= controller_name %> action-<%= action_name %>">
+    <header>
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+    </header>
+    <nav>
+      <%= link_to 'New Car Wash', new_wash_path, class: current_page?(new_wash_path) ? "selected" : '' %>
+      <%= link_to 'My Vehicles', vehicles_path, class: current_page?(vehicles_path) ? "selected" : '' %>
+      <%= link_to 'New Vehicle', new_vehicle_path, class: current_page?(new_vehicle_path) ? "selected" : '' %>
+    </nav>
+    <main><%= yield %></main>
+    <footer></footer>
+  </body>
+</html>

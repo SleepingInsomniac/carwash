@@ -1,0 +1,29 @@
+<h1>Washes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Vehicle</th>
+      <th>Total</th>
+      <!-- <th>Description</th> -->
+      <th>Washed at</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @washes.each do |wash| %>
+      <tr>
+        <td><%= wash.vehicle.license %></td>
+        <td class="money"><%= number_to_currency wash.total %></td>
+        <!-- <td><%= wash.description %></td> -->
+        <td><%= wash.created_at.strftime("%B %m, %Y at %r (%Z)") %></td>
+        <td><%= link_to 'Show', wash %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Wash', new_wash_path %>

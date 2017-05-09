@@ -1,0 +1,43 @@
+<h1>Thank you!</h1>
+
+<% if @show_discount %>
+  <p><em>Wash this vehicle again for a discount of 50%!</em></p>
+<% end %>
+
+<p>Here is your transaction reciept:</p>
+
+<label>
+  <div class="reciept">
+    <h3>
+      <strong>Car wash charges:</strong>
+    </h3>
+
+    <div class="license">
+      License: <%= @wash.vehicle.license %> (<%= @wash.vehicle.vehicle_type %>)
+    </div>
+    
+    <ul>
+      <% @wash.charges.each do |charge| %>
+        <li>
+          <span class="reciept-item"><%= charge.description %></span>
+          <span class="reciept-value <%= charge.is_credit? ? 'credit':'' %>">
+            <% if charge.is_credit? %>
+              <%= number_to_currency charge.amount %>
+            <% else %>
+              (<%= number_to_currency charge.amount %>)
+            <% end %>
+          </span>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="total">
+      <strong>Total:</strong>
+      <%= number_to_currency @wash.total %>
+    </div>
+  </div>
+</label>
+
+<%= link_to 'Edit', edit_wash_path(@wash) %> |
+<%= link_to 'Print', 'javascript:window.print()' %> |
+<%= link_to 'Wash another car', new_wash_path %>

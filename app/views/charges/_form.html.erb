@@ -1,0 +1,32 @@
+<%= form_with(model: charge, local: true) do |form| %>
+  <% if charge.errors.any? %>
+    <div class="errors">
+      <h2><%= pluralize(charge.errors.count, "error") %> prohibited this charge from being saved:</h2>
+
+      <ul>
+      <% charge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :charge_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.text_field :amount, id: :charge_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wash_id %>
+    <%= form.text_field :wash_id, id: :charge_wash_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
